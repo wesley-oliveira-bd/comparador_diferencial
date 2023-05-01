@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: darkcyan;
+}
+
+div.dif1 {
+    margin: auto;
+    background-color: lightgray;
+    width: 500px;
+    height: 480px;
+}
+   
+fieldset {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+}
+input {
+    padding: 5px;
+}
+
+div#btn {
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+div#comparacao {
+    text-align: center;
+    font-weight: bolder;
+}
+
+footer {
+    text-align: center;
+}
+
+    </style>
+    <title>Comparador de diferencial</title>
+</head>
+<body><header>
+    <h1>Comparador de Diferenciais</h1>
+</header>
+    <div class="dif1">
+        
+            <fieldset><legend>Diferencial 1</legend>
+                <label for="pinhao">Dentes pinhão:</label>
+                <input type="number" name="pinhao" id="pinhao1"><br>
+                <label for="coroa">Dentes coroa:</label>
+                <input type="number" name="coroa" id="coroa1">
+                <div id="res1"></div>
+            </fieldset>
+            <fieldset><legend>Diferencial 2</legend>
+                <label for="pinhao">Dentes pinhão:</label>
+                <input type="number" name="pinhao" id="pinhao2"><br>
+                <label for="coroa">Dentes coroa:</label>
+                <input type="number" name="coroa" id="coroa2">
+                <div id="res2"></div>
+            </fieldset>
+            <div id="comparacao"></div>
+            <div id="btn">
+                <button type="submit" onclick="calcular()">Calcular</button><br>
+                <button><a href="index.html">Limpar</a></button>
+            </div>
+    </div>
+    
+
+    <script>
+        function calcular(){
+            var pinhao1 = document.getElementById('pinhao1').value;
+            var coroa1 = document.getElementById('coroa1').value;
+            var rel1 = document.getElementById('res');
+            rel1 = coroa1/pinhao1;
+            res1.innerHTML = `A relação deste diferencial é ${rel1.toFixed(2)}<br> São necessários <font color='red'>${rel1.toFixed(2)}</font> voltas no pinhão para <font color='red'>1</font> volta na roda.`;
+            var pinhao2 = document.getElementById('pinhao2').value;
+            var coroa2 = document.getElementById('coroa2').value;
+            var rel2 = coroa2/pinhao2;
+            
+            res2.innerHTML = `A relação deste diferencial é ${rel2.toFixed(2)}<br> São necessários <font color='blue'>${rel2.toFixed(2)}</font> voltas no pinhão para <font color='blue'>1</font> volta na roda.`;
+
+            if (rel1 > rel2){
+                comparacao.innerHTML = 'O diferencial 1 é o mais reduzido.'
+            }
+            else {
+                comparacao.innerHTML = 'O diferencial 2 é o mais reduzido.'
+            }
+        }
+    </script>    
+    <footer>Desenvolvido por Wesley Oliveira</footer>
+</body>
+</html>
